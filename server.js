@@ -1,7 +1,7 @@
 const express = require('express');
 
 const htmlRouter = require('./routes/html-routes.js');
-const authorRouter = require('./routes/author-api-routes.js');
+const rehomerRouter = require('./routes/author-api-routes.js');
 const apiRouter = require('./routes/post-api-routes.js');
 
 // Sets up the Express App
@@ -20,7 +20,7 @@ app.use(express.static('public'));
 
 // Invoke routes
 htmlRouter(app);
-authorRouter(app);
+rehomerRouter(app);
 apiRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
