@@ -1,20 +1,19 @@
 {
-  "name": "dogslist",
+  "name": "post-author-joins",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "watch": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lauraaupert/DogsList.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lauraaupert/DogsList/issues"
-  },
-  "homepage": "https://github.com/lauraaupert/DogsList#readme"
+  "dependencies": {
+    "express": "^4.16.3",
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.41.2"
+  }
 }
