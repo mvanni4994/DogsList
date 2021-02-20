@@ -1,14 +1,29 @@
-const express = require('express')
-const exphbs = require('express-handlebars')
-const mysql = require('mysql')  
+const express = require('express');
 
-const connection = mysql.createConnection({
-    port:8080,
-    user:'root',
-    database: "rehomers"
-})
+const htmlRouter = require('./routes/html-routes.js');
+const rehomerRouter = require('./routes/author-api-routes.js');
+const apiRouter = require('./routes/post-api-routes.js');
 
-const app = express()
-app.get('/', function(req, res){
+// Sets up the Express App
+const app = express();
+const PORT = process.env.PORT || 8080;
 
-})
+// Requiring our models for syncing
+const db = require('./models');
+
+// Sets up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Static directory
+app.use(express.static('public'));
+
+// Invoke routes
+htmlRouter(app);
+rehomerRouter(app);
+apiRouter(app);
+
+// Syncing our sequelize models and then starting our Express app
+db.sequelize.sync({ force: true }).then(() => {
+  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+});
