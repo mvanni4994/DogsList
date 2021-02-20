@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Post.associate = (models) => {
-    // We're saying that a Post should belong to an seeker
+    // We're saying that a Post should belong to an seeker ---
     // A Post can't be created without an seeker due to the foreign key constraint
     Post.belongsTo(models.Seeker, {
       foreignKey: {

@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Seeker.associate = (models) => {
-    // Associating seekers with Posts
+    // Associating seekers with Posts --
     // When an seeker is deleted, also delete any associated Posts
     Seeker.hasMany(models.Post, {
       onDelete: "cascade",

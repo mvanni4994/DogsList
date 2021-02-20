@@ -73,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   OwnerPost.associate = (models) => {
-    // We're saying that a Post should belong to an Author
+    // We're saying that a Post should belong to an Author --
     // A Post can't be created without an Author due to the foreign key constraint
     OwnerPost.belongsTo(models.Owner, {
       foreignKey: {

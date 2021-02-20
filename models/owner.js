@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   Owner.associate = (models) => {
-    // Associating owners with Posts
+    // Associating owners with Posts --
     // When an owners is deleted, also delete any associated Posts
     Owner.hasMany(models.OwnerPost, {
       onDelete: "cascade",
