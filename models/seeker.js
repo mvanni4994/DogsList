@@ -1,8 +1,12 @@
 module.exports = (sequelize, DataTypes) => {
-  const Seeker = sequelize.define("Seeker", {
-    // Giving the seeker model a name of type STRING
-    name: DataTypes.STRING,
-  });
+  const Seeker = sequelize.define(
+    "Seeker",
+    {
+      // Giving the seeker model a name of type STRING
+      name: DataTypes.STRING,
+    },
+    { freezeTableName: true }
+  );
 
   Seeker.associate = (models) => {
     // Associating seekers with Posts
