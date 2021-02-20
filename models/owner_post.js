@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Post = sequelize.define("Post", {
+  const OwnerPost = sequelize.define("OwnerPost", {
     dog_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -71,5 +71,16 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
   });
-  return Post;
+
+  OwnerPost.associate = (models) => {
+    // We're saying that a Post should belong to an Author --
+    // A Post can't be created without an Author due to the foreign key constraint
+    OwnerPost.belongsTo(models.Owner, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+
+  return OwnerPost;
 };
