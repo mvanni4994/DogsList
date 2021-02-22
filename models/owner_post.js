@@ -16,56 +16,56 @@ module.exports = (sequelize, DataTypes) => {
     },
     dog_age: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     dog_size: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     borough: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     temperament_pets: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     temperament_children: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     vaccinations: {
       type: DataTypes.BOOLEAN,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     owners_contact: {
       type: DataTypes.STRING,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
     },
     body: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      // allowNull: false,
       validate: {
         len: [1],
       },
