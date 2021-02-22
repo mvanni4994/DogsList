@@ -7,22 +7,31 @@ const show = (el) => {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded! 🚀');
 
-  // Get references to the body, title, form and author
+  // Get references to the body, title, form and owner
+  const dogBreedInput = document.getElementById('dog-breed');
+  const dogNameInput = document.getElementById('dog-name');
+  const dogAgeInput = document.getElementById('dog-age');
+  const dogSizeInput = document.getElementById('dog-size');
+  const boroughInput = document.getElementById('borough');
+  // const temperamentPetsInput = document.getElementById('temperament-pets');
+  // const temperamentChildrenInput = document.getElementById('temperament-children');
+  // const vaccinationInput = document.getElementById('vaccination');
+  const ownersContactInput = document.getElementById('owners-contact');
   const bodyInput = document.getElementById('body');
-  const titleInput = document.getElementById('title');
+
   const cmsForm = document.getElementById('cms');
-  const authorSelect = document.getElementById('author');
+  const ownerSelect = document.getElementById('owner');
 
   // Get query parameter
   const url = window.location.search;
-  let postId;
-  let authorId;
+  let OwnerPostId;
+  let OwnerId;
   let updating = false;
 
   // Get post data for editing/adding
-  const getPostData = (id, type) => {
+  const getOwnerPostData = (id, type) => {
     const queryUrl =
-      type === 'post' ? `/api/posts/${id}` : `/api/authors/${id}`;
+      type === 'post' ? `/api/ownerposts/${id}` : `/api/owners/${id}`;
 
     fetch(queryUrl, {
       method: 'GET',
@@ -36,9 +45,16 @@ document.addEventListener('DOMContentLoaded', () => {
           console.log('Success in getting post:', data);
 
           // Populate the form for editing
-          titleInput.value = data.title;
-          bodyInput.value = data.body;
-          authorId = data.AuthorId || data.id;
+          dogNameInput.value = data.dog_name;
+          dogBreedInput.value = data.dog_breed;
+          dogAgeInput.value = data.dog_age;
+          dogSizeInput.value = data.dog_size;
+          boroughInput = data.borough
+          // temperamentPetsInput = data.temperament_pets;
+          // temperamentChildrenInput = data.temperament_children;
+          // vaccinationInput = data.vaccination;
+          bodyInput = data.body;
+          OwnerId = data.OwnerId || data.id;
 
           // We are updating
           updating = true;
@@ -48,13 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // If post exists, grab the content of the post
-  if (url.indexOf('?post_id=') !== -1) {
-    postId = url.split('=')[1];
-    getPostData(postId, 'post');
+  if (url.indexOf('?ownerposts_id=') !== -1) {
+    OwnerPostId = url.split('=')[1];
+    getOwnerPostData(OwnerPostId, 'post');
   }
-  // Otherwise if we have an author_id in our url, preset the author select box to be our Author
-  else if (url.indexOf('?author_id=') !== -1) {
-    authorId = url.split('=')[1];
+  // Otherwise if we have an owner_id in our url, preset the owner select box to be our Owner
+  else if (url.indexOf('?owner_id=') !== -1) {
+    OwnerId = url.split('=')[1];
   }
 
   // Event handler for when the post for is submitted
@@ -63,26 +79,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Make sure the form isn't empty
     if (
-      !titleInput.value.trim() ||
-      !bodyInput.value.trim() ||
-      !authorSelect.value
+      !dogNameInput.value.trim() ||
+      !dogBreedInput.value.trim() ||
+      !ownerSelect.value
     ) {
       return;
     }
 
     // Object that will be sent to the db
-    const newPost = {
-      title: titleInput.value.trim(),
+    const newOwnerPost = {
+      dog_name: dogNameInput.value.trim(),
+      dog_breed: dogBreedInput.value.trim(),
+      dog_age: dogAgeInput.value.trim(),
+      dog_size: dogSizeInput.value.trim(),
+      borough: boroughInput.value.trim(),
+      //temperament_pets: temperamentPetsInput.value.trim(),
+      // temperament_children: temperamentChildrenInput.value.trim(),
+      // vaccination: vaccinationInput.value.trim(),
+      owners_contact: ownersContactInput.value.trim(),
       body: bodyInput.value.trim(),
-      AuthorId: authorSelect.value,
+      OwnerId: ownerSelect.value,
     };
 
     // Update a post if flag is true, otherwise submit a new one
     if (updating) {
-      newPost.id = postId;
-      updatePost(newPost);
+      newOwnerPost.id = OwnerPostId;
+      updateOwnerPost(newOwnerPost);
     } else {
-      submitPost(newPost);
+      submitOwnerPost(newOwnerPost);
     }
   };
 
@@ -90,25 +114,25 @@ document.addEventListener('DOMContentLoaded', () => {
   cmsForm.addEventListener('submit', handleFormSubmit);
 
   // Submits new post then redirects
-  const submitPost = (post) => {
-    fetch('/api/posts', {
+  const submitOwnerPost = (ownerpost) => {
+    fetch('/api/ownerposts', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(post),
+      body: JSON.stringify(ownerpost),
     })
       .then(() => {
-        window.location.href = '/blog';
+        window.location.href = '/ownerposts';
       })
       .catch((err) => console.error(err));
   };
 
-  // Render a list of authors or redirect if no authors
-  const renderAuthorList = (data) => {
-    console.log('renderAuthorList -> data', data);
+  // Render a list of owners or redirect if no owners
+  const renderOwnerList = (data) => {
+    console.log('renderOwnerList -> data', data);
     if (!data.length) {
-      window.location.href = '/authors';
+      window.location.href = '/owners';
     }
     if (document.querySelector('.hidden')) {
       show(document.querySelector('.hidden'));
@@ -116,51 +140,51 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const rowsToAdd = [];
 
-    data.forEach((author) => rowsToAdd.push(createAuthorRow(author)));
+    data.forEach((owner) => rowsToAdd.push(createOwnerRow(owner)));
 
-    authorSelect.innerHTML = '';
-    console.log('renderAuthorList -> rowsToAdd', rowsToAdd);
-    console.log('authorSelect', authorSelect);
+    ownerSelect.innerHTML = '';
+    console.log('renderOwnerList -> rowsToAdd', rowsToAdd);
+    console.log('ownerSelect', ownerSelect);
 
-    rowsToAdd.forEach((row) => authorSelect.append(row));
-    authorSelect.value = authorId;
+    rowsToAdd.forEach((row) => ownerSelect.append(row));
+    ownerSelect.value = OwnerId;
   };
 
-  // Build author dropdown
-  const createAuthorRow = ({ id, name }) => {
+  // Build owner dropdown
+  const createOwnerRow = ({ id, name }) => {
     const listOption = document.createElement('option');
     listOption.value = id;
     listOption.textContent = name;
     return listOption;
   };
 
-  // A function to get Authors and then call the render function
-  const getAuthors = () => {
-    fetch('api/authors', {
+  // A function to get Owners and then call the render function
+  const getOwners = () => {
+    fetch('api/owners', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
     })
       .then((response) => response.json())
-      .then((data) => renderAuthorList(data))
+      .then((data) => renderOwnerList(data))
       .catch((err) => console.error(err));
   };
 
-  // Get the authors, and their posts
-  getAuthors();
+  // Get the owner, and their posts
+  getOwners();
 
   // Update a post then redirect to blog
-  const updatePost = (post) => {
-    fetch('/api/posts', {
+  const updateOwnerPost = (ownerpost) => {
+    fetch('/api/ownerposts', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(post),
+      body: JSON.stringify(ownerpost),
     })
       .then(() => {
-        window.location.href = '/blog';
+        window.location.href = '/ownerposts';
       })
       .catch((err) => console.error(err));
   };
