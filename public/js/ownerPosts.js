@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOwnerPostCardBody = document.createElement('div');
     newOwnerPostCardBody.classList.add('card-body');
 
-    const newOwnerPostName = document.createElement('p');
     const newOwnerPostBreed = document.createElement('p');
     const newOwnerPostAge = document.createElement('p');
     const newOwnerPostSize = document.createElement('p');
@@ -107,15 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOwnerPostContact = document.createElement('p');
     const newOwnerPostBody = document.createElement('p');
 
+
+
     newOwnerPostDogName.textContent = `${ownerpost.dog_name} `;
-     newOwnerPostBreed.textContent = ownerpost.dog_breed;
-     newOwnerPostAge.textContent = ownerpost.dog_age;
-     newOwnerPostSize.textContent = ownerpost.dog_size;
-     newOwnerPostBorough.textContent = ownerpost.borough;
-     newOwnerPostPets.textContent = ownerpost.temperament_pets;
-     newOwnerPostChildren.textContent = ownerpost.temperament_children;
-     newOwnerPostVaccination.textContent = ownerpost.vaccination;
-     newOwnerPostContact.textContent = ownerpost.owners_contact;
+     newOwnerPostBreed.textContent = `Breed: ${ownerpost.dog_breed}`;
+     newOwnerPostAge.textContent = `Age: ${ownerpost.dog_age}`;
+     newOwnerPostSize.textContent = `Size: ${ownerpost.dog_size}`;
+     newOwnerPostBorough.textContent = `Location: ${ownerpost.borough}`;
+     newOwnerPostPets.textContent = `Good with pets: ${ownerpost.temperament_pets}`;
+     newOwnerPostChildren.textContent = `Good with children: ${ownerpost.temperament_children}`;
+     newOwnerPostVaccination.textContent = `Vaccinated: ${ownerpost.vaccination}`;
+     newOwnerPostContact.textContent = `Contact: ${ownerpost.owners_contact}`;
 
     newOwnerPostBody.textContent = ownerpost.body;
     newOwnerPostDate.textContent = ` (${formattedDate})`;

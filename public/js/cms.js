@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const dogAgeInput = document.getElementById('dog-age');
   const dogSizeInput = document.getElementById('dog-size');
   const boroughInput = document.getElementById('borough');
-  // const temperamentPetsInput = document.getElementById('temperament-pets');
-  // const temperamentChildrenInput = document.getElementById('temperament-children');
-  // const vaccinationInput = document.getElementById('vaccination');
+  const temperamentPetsInput = document.getElementsByClassName('temperament-pets');
+  const temperamentChildrenInput = document.getElementsByClassName('temperament-children');
+  const vaccinationInput = document.getElementsByClassName('vaccination');
   const ownersContactInput = document.getElementById('owners-contact');
   const bodyInput = document.getElementById('body');
 
@@ -50,9 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
           dogAgeInput.value = data.dog_age;
           dogSizeInput.value = data.dog_size;
           boroughInput = data.borough
-          // temperamentPetsInput = data.temperament_pets;
-          // temperamentChildrenInput = data.temperament_children;
-          // vaccinationInput = data.vaccination;
+          temperamentPetsInput = data.temperament_pets;
+          temperamentChildrenInput = data.temperament_children;
+          vaccinationInput = data.vaccinations;
           bodyInput = data.body;
           OwnerId = data.OwnerId || data.id;
 
@@ -93,9 +93,9 @@ document.addEventListener('DOMContentLoaded', () => {
       dog_age: dogAgeInput.value.trim(),
       dog_size: dogSizeInput.value.trim(),
       borough: boroughInput.value.trim(),
-      //temperament_pets: temperamentPetsInput.value.trim(),
-      // temperament_children: temperamentChildrenInput.value.trim(),
-      // vaccination: vaccinationInput.value.trim(),
+      temperament_pets: temperamentPetsInput.value,
+      temperament_children: temperamentChildrenInput.value,
+      vaccinations: vaccinationInput.value,
       owners_contact: ownersContactInput.value.trim(),
       body: bodyInput.value.trim(),
       OwnerId: ownerSelect.value,
