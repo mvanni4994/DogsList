@@ -13,24 +13,70 @@
 	<div class="container hidden">
 		<div class="row top-30">
       <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/blog">Go to Blog</a>
+        <a class="btn btn-light" href="/ownerposts">Go to Blog</a>
       </div>
       <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/authors">Manage Authors</a>
+        <a class="btn btn-light" href="/owners">Manage Owners</a>
       </div>
     </div>
 		<div class="row">
 			<div class="col-md-6 offset-md-3">
 				<form id="cms">
 					<div class="form-group">
-						<label for="title">Title:</label>
-						<input placeholder="Post Title" type="text" class="form-control" id="title">
+						<label for="dog-name">Dog Name:</label>
+						<input placeholder="Enter Dog Name" type="text" class="form-control" id="dog-name">
 						<br />
+						<label for="dog-breed">Dog Breed:</label>
+						<input placeholder="Enter Dog Breed" type="text" class="form-control" id="dog-breed">
+						<br />
+
+						<label for="dog-age">Dog Age:</label>
+						<input placeholder="Enter Dog Age" type="text" class="form-control" id="dog-age">
+						<br />
+						<label for="dog-size">Dog Size:</label>
+						<input placeholder="Enter Dog Size" type="text" class="form-control" id="dog-size">
+						<br />
+						<label for="borough">Borough:</label>
+						<input placeholder="Enter Borough" type="text" class="form-control" id="borough">
+						<br />
+						<label for="temperament-pets">Dog Temperament with Pets:</label>
+						<!-- <input placeholder="How does your dog behave with pets?" type="text" class="form-control" id="temperament-pets"> -->
+						<br />
+						<input type="radio" class="temperament-pets" name="good" value="1" id="good-pets"> Very Good<br>
+						<input type="radio" class="temperament-pets" name="bad" value="0" id="bad-pets"> Not Always Great
+						<br />
+						<br />
+						<label for="temperament-children">Dog Temperament with Children:</label>
+						<!-- <input placeholder="How does your dog behave with children?" type="text" class="form-control" id="temperament-children"> -->
+						<br />
+						<input type="radio" class="temperament-children" name="good" value="1" id="good-children"> Very Good<br>
+						<input type="radio" class="temperament-children" name="bad" value="0" id="bad-children"> Not always great
+						<br />
+						<br />
+						<label for="vaccination">Vaccination:</label>
+						<!-- <input placeholder="change to checkbox" type="text" class="form-control" id="vaccination"> -->
+						
+						<br />
+						<input type="radio" class="vaccination" name="vaccinated" value="1" id="vaccinated"> Vaccinated<br>
+						<input type="radio" class="vaccination" name="not-vaccinated" value="0" id="not-vaccinated"> Not Vaccinated
+						<br />
+						<br />
+
+						<label for="owners-contact">Owner's Contact:</label>
+						<input placeholder="Enter Email" type="text" class="form-control" id="owners-contact">
+						<br />
+
+						
+
+
+
+
+
 						<label for="body">Body:</label>
-						<textarea placeholder="Post Body" class="form-control" rows="10" id="body"></textarea>
+						<textarea placeholder="Enter Post" class="form-control" rows="10" id="body"></textarea>
 						<div class="form-group">
-							<label for="category">Select Author:</label>
-							<select class="custom-select" id="author">
+							<label for="category">Select Owner:</label>
+							<select class="custom-select" id="owner">
   						</select>
 						</div>
 						<br />
