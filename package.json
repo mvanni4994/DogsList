@@ -19,6 +19,7 @@
 >>>>>>> main
     "express-handlebars": "^5.2.1",
     "mysql2": "^1.6.4",
+    "passport": "^0.4.1",
     "sequelize": "^4.41.2"
   }
 }
