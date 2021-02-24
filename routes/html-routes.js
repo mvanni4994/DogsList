@@ -12,16 +12,17 @@ module.exports = (app) => {
 
   // cms route loads cms.html
   app.get('/cms', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/cms.html'))
+    res.render("index")
   );
 
   // blog route loads blog.html
   app.get('/ownerposts', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/ownerblog.html'))
+    res.render("ownerblog")
   );
 
   // authors route loads author-manager.html
   app.get('/owners', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/owner-manager.html'))
+  res.render("owners")
   );
+
 };
