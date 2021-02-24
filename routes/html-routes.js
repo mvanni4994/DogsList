@@ -7,7 +7,7 @@ module.exports = (app) => {
 
   // index route loads view.html
   app.get('/', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/blog.html'))
+    res.sendFile(path.join(__dirname, '../public/ownerblog.html'))
   );
 
   // cms route loads cms.html
@@ -16,12 +16,12 @@ module.exports = (app) => {
   );
 
   // blog route loads blog.html
-  app.get('/blog', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/blog.html'))
+  app.get('/ownerposts', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/ownerblog.html'))
   );
 
   // authors route loads author-manager.html
-  app.get('/authors', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/author-manager.html'))
+  app.get('/owners', (req, res) =>
+    res.sendFile(path.join(__dirname, '../public/owner-manager.html'))
   );
 };
