@@ -1,6 +1,5 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
-
 const htmlRouter = require('./routes/html-routes.js');
 const ownerRouter = require('./routes/owner-api-routes.js');
 const apiRouter = require('./routes/post-api-routes.js');
@@ -47,8 +46,6 @@ const Strategy = require('passport-local').Strategy;
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
-
-// Handlebars engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 // Requiring our models for syncing
@@ -73,4 +70,9 @@ apiRouter(app);
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(() => {
   app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
+
 });
+
+
+
+
