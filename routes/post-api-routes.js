@@ -5,53 +5,53 @@ const db = require('../models');
 
 // Routes
 module.exports = (app) => {
-  app.get('/api/posts', (req, res) => {
+  app.get('/api/ownerposts', (req, res) => {
     const query = {};
-    if (req.query.author_id) {
-      query.AuthorId = req.query.author_id;
+    if (req.query.owner_id) {
+      query.OwnerId = req.query.owner_id;
     }
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Author
-    db.Post.findAll({
+    db.OwnerPost.findAll({
       where: query,
-      include: [db.Author],
-    }).then((dbPost) => res.json(dbPost));
+      include: [db.Owner],
+    }).then((dbOwnerPost) => res.json(dbOwnerPost));
   });
 
   // Get route for retrieving a single post
-  app.get('/api/posts/:id', (req, res) => {
+  app.get('/api/ownerposts/:id', (req, res) => {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Author
-    db.Post.findOne({
+    db.OwnerPost.findOne({
       where: {
         id: req.params.id,
       },
-      include: [db.Author],
-    }).then((dbPost) => res.json(dbPost));
+      include: [db.Owner],
+    }).then((dbOwnerPost) => res.json(dbOwnerPost));
   });
 
   // POST route for saving a new post
-  app.post('/api/posts', (req, res) => {
-    db.Post.create(req.body).then((dbPost) => res.json(dbPost));
+  app.post('/api/ownerposts', (req, res) => {
+    db.OwnerPost.create(req.body).then((dbOwnerPost) => res.json(dbOwnerPost));
   });
 
   // DELETE route for deleting posts
-  app.delete('/api/posts/:id', (req, res) => {
-    db.Post.destroy({
+  app.delete('/api/ownerposts/:id', (req, res) => {
+    db.OwnerPost.destroy({
       where: {
         id: req.params.id,
       },
-    }).then((dbPost) => res.json(dbPost));
+    }).then((dbOwnerPost) => res.json(dbOwnerPost));
   });
 
   // PUT route for updating posts
-  app.put('/api/posts', (req, res) => {
-    db.Post.update(req.body, {
+  app.put('/api/ownerposts', (req, res) => {
+    db.OwnerPost.update(req.body, {
       where: {
         id: req.body.id,
       },
-    }).then((dbPost) => res.json(dbPost));
+    }).then((dbOwnerPost) => res.json(dbOwnerPost));
   });
 };
