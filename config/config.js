@@ -9,7 +9,7 @@ module.exports = {
     },
     "test": {
         "username": "root",
-        "password": "Tstai.410",
+        "password": "password",
         "database": "database_test",
         "host": "127.0.0.1",
         "port": 3306,
