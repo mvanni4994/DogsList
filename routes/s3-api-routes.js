@@ -7,10 +7,11 @@ var s3 = new AWS.S3({
 
 module.exports = (app) => {
     app.post("/api/assets/upload", (req, res) => {
+        console.log(req.body)
         var params = {
             Key: 'hello',
             Bucket: "dogslistproject2",
-            Body: new Buffer('Hello, node.js'),
+            Body: req.body
         };
         s3.putObject(params, function put(err, data) {
             if (err) {
