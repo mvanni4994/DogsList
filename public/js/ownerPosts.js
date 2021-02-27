@@ -5,10 +5,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const blogContainer = document.querySelector('.blog-container');
 
   // Variable to hold our ownerPosts
-  let ownerPosts;
+  let OwnerPost;
 
   const getOwnerPosts = (owner) => {
     OwnerId = owner || '';
+
     if (OwnerId) {
       OwnerId = `/?owners_id=${OwnerId}`;
     }
@@ -39,11 +40,14 @@ document.addEventListener('DOMContentLoaded', () => {
     OwnerId = url.split('=')[1];
     getOwnerPosts(OwnerId);
   } else {
+    console.log("here is ownerid" + OwnerId);
+
     getOwnerPosts();
   }
 
   // Front end call to DELETE a post
   const deleteOwnerPost = (id) => {
+    console.log(id)
     fetch(`/api/ownerposts/${id}`, {
       method: 'DELETE',
       headers: {
@@ -61,13 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
     ownerPostsToAdd.forEach((ownerpost) => blogContainer.append(ownerpost));
   };
 
+
   const createNewRow = (ownerpost) => {
     console.log('createNewRow -> ownerpost', ownerpost);
 
     const formattedDate = new Date(ownerpost.createdAt).toLocaleDateString();
+    const cardID = ownerpost.id
 
     const newOwnerPostCard = document.createElement('div');
     newOwnerPostCard.classList.add('card');
+    newOwnerPostCard.addEventListener('click', function(event) {
+      event.preventDefault();
+      console.log(event)
+      console.log(cardID)
+      window.location.href = `/post/${cardID}`;
+    })
 
     const newOwnerPostCardHeading = document.createElement('div');
     newOwnerPostCardHeading.classList.add('card-header');
@@ -88,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOwnerPostDate = document.createElement('small');
     const newOwnerPostOwner = document.createElement('h5');
 
-    newOwnerPostOwner.textContent = `Written by: ${ownerpost.Owner.name}`;
+    // newOwnerPostOwner.textContent = `Written by: ${ownerpost.Owner.name}`;
     newOwnerPostOwner.style.float = 'right';
     newOwnerPostOwner.style.color = 'blue';
     newOwnerPostOwner.style.marginTop = '-10px';
@@ -157,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const messageH2 = document.createElement('h2');
     messageH2.style.textAlign = 'center';
     messageH2.style.marginTop = '50px';
-    messageH2.innerHTML = `No ownerPosts yet${partial}, navigate <a href='/cms${query}'>here</a> in order to get started.`;
+    messageH2.innerHTML = `No ownerPosts yet${partial}, navigate <a href='/owners'>here</a> in order to get started.`;
     blogContainer.append(messageH2);
   };
 

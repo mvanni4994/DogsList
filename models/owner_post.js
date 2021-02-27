@@ -77,13 +77,6 @@ module.exports = (sequelize, DataTypes) => {
         len: [1],
       },
     },
-    dog_pic: {
-      type: DataTypes.STRING,
-      // allowNull: false,
-      validate: {
-        len: [1],
-      },
-    },
   });
 
   OwnerPost.associate = (models) => {
