@@ -26,7 +26,7 @@ module.exports = (app) => {
     );
 
     //To load each individual post
-    app.get('/post/:id', (req, res) =>
+    app.get('/post/=:id', (req, res) =>
     res.render("post")
 );
 

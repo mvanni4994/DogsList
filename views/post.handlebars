@@ -46,9 +46,11 @@
   <script>
 const postContainer = document.querySelector('.post-container');
 
-const url = window.location.search;
-
+const url = window.location.href;
+const address = []
 let PostId = url.split('=')[1];
+console.log(url)
+console.log(PostId)
 
   getPost(PostId);
   console.log(PostId)
@@ -61,7 +63,8 @@ let owners_address;
     //     PostID = 
     // //   PostId = `/?owners_id=${OwnerId}`;
     // 
-    fetch(`/api/ownerposts${PostId}`, {
+    console.log(id)
+    fetch(`/api/ownerposts/${PostId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -71,18 +74,18 @@ let owners_address;
         .then((data) => {
             OwnerPost = data;
             console.log('Success in getting ownerPosts:', data);
-            if (!data || !data.length) {
+            {{!-- if (!data || !data.length) {
                 displayEmpty(owner);
-            } else {
+            } else { --}}
                 {{!-- initializeRows(); --}}
                 console.log(data)
                 createNewRow(data)
-            }
+            {{!-- } --}}
         })
         .catch((error) => console.error('Error:', error));
   
   const createNewRow = (OwnerPost) => {
-      console.log(OwnerPost[0].dog_name)
+      console.log(OwnerPost.dog_name)
 
     const newOwnerPostCard = document.createElement('div');
     newOwnerPostCard.classList.add('card');
@@ -108,19 +111,19 @@ const newOwnerPostContact = document.createElement('p');
 const newOwnerPostBody = document.createElement('p');
 
 
-newOwnerPostDogName.textContent = `${OwnerPost[0].dog_name} `;
-newOwnerPostBreed.textContent = `Breed: ${OwnerPost[0].dog_breed}`;
-newOwnerPostAge.textContent = `Age: ${OwnerPost[0].dog_age}`;
-newOwnerPostSize.textContent = `Size: ${OwnerPost[0].dog_size}`;
-newOwnerPostBorough.textContent = `Location: ${OwnerPost[0].borough}`;
-newOwnerPostPets.textContent = `Good with pets: ${OwnerPost[0].temperament_pets}`;
-newOwnerPostChildren.textContent = `Good with children: ${OwnerPost[0].temperament_children}`;
-newOwnerPostVaccination.textContent = `Vaccinated: ${OwnerPost[0].vaccination}`;
-newOwnerPostContact.textContent = `Contact: ${OwnerPost[0].owners_contact}`;
+newOwnerPostDogName.textContent = `${OwnerPost.dog_name} `;
+newOwnerPostBreed.textContent = `Breed: ${OwnerPost.dog_breed}`;
+newOwnerPostAge.textContent = `Age: ${OwnerPost.dog_age}`;
+newOwnerPostSize.textContent = `Size: ${OwnerPost.dog_size}`;
+newOwnerPostBorough.textContent = `Location: ${OwnerPost.borough}`;
+newOwnerPostPets.textContent = `Good with pets: ${OwnerPost.temperament_pets}`;
+newOwnerPostChildren.textContent = `Good with children: ${OwnerPost.temperament_children}`;
+newOwnerPostVaccination.textContent = `Vaccinated: ${OwnerPost.vaccination}`;
+newOwnerPostContact.textContent = `Contact: ${OwnerPost.owners_contact}`;
 
-    const formattedDate = new Date(OwnerPost[0].createdAt).toLocaleDateString();
+    const formattedDate = new Date(OwnerPost.createdAt).toLocaleDateString();
 
-newOwnerPostBody.textContent = OwnerPost[0].body;
+newOwnerPostBody.textContent = OwnerPost.body;
 newOwnerPostDate.textContent = ` (${formattedDate})`;
 newOwnerPostDogName.append(newOwnerPostDate);
 // newOwnerPostCardHeading.append(deleteBtn);
@@ -141,12 +144,13 @@ newOwnerPostCardBody.append(newOwnerPostContact);
 newOwnerPostCardBody.append(newOwnerPostBody);
 newOwnerPostCard.append(newOwnerPostCardHeading);
 newOwnerPostCard.append(newOwnerPostCardBody);
-newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost[0]));
+newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost));
     postContainer.innerHTML = '';
 
     postContainer.append(newOwnerPostCard);
 
-    owners_address = OwnerPost[0].owners_address;
+    owners_address = OwnerPost.owners_address;
+    address.push(owners_address)
 
 
   }
@@ -164,10 +168,8 @@ dogMap.setAttribute('style', 'height: 300px')
 dogMap.setAttribute('style', 'background-color: blue')
 postContainer.append(dogMap) --}}
 
-console.log(owners_address)
 
-  {{!-- </script>
-
+  </script>
 
 
 
@@ -184,7 +186,9 @@ console.log(owners_address)
 
 
 
-  <script> --}}
+
+  <script> 
+      console.log(address)
     console.log("its hitting");
     let map;
     function initMap() {
