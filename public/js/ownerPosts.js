@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
       console.log(event)
       console.log(cardID)
-      window.location.href = `/post/${cardID}`;
+      window.location.href = `/post/=${cardID}`;
     })
 
     const newOwnerPostCardHeading = document.createElement('div');
