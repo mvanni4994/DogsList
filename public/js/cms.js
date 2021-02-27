@@ -191,13 +191,21 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.onchange = (event) => {
         console.log(event.target.files)
         const reader = new FileReader()
-        reader.onload = () => {
-            console.log(reader.result)
-            fetch("/api/assets/upload", {
-                method: "POST",
-                body: reader.result
-            })
-        }
-        reader.readAsBinaryString(event.target.files[0])
+            // reader.onload = () => {
+        reader.onloadend = () => {
+                console.log(reader.result)
+                fetch("/api/assets/upload", {
+                    method: "POST",
+                    headers: {
+                        // ADDED telling server that payload is Json
+                        "Content-Type": "application/json"
+                    },
+                    //body: reader.result
+                    body: JSON.stringify({ file: reader.result })
+                })
+            }
+            //reader.readAsBinaryString(event.target.files[0])
+        reader.readAsDataURL(event.target.files[0])
+
     }
 });
