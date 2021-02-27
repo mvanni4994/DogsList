@@ -45,9 +45,10 @@
   </div>
   <script>
 const postContainer = document.querySelector('.post-container');
+var address;
 
 const url = window.location.href;
-const address = []
+//const address = []
 let PostId = url.split('=')[1];
 console.log(url)
 console.log(PostId)
@@ -80,9 +81,11 @@ let owners_address;
                 {{!-- initializeRows(); --}}
                 console.log(data)
                 createNewRow(data)
+                initMap(data.owners_address)
             {{!-- } --}}
         })
         .catch((error) => console.error('Error:', error));
+  }
   
   const createNewRow = (OwnerPost) => {
       console.log(OwnerPost.dog_name)
@@ -109,6 +112,10 @@ const newOwnerPostChildren = document.createElement('p');
 const newOwnerPostVaccination = document.createElement('p');
 const newOwnerPostContact = document.createElement('p');
 const newOwnerPostBody = document.createElement('p');
+const newOwnerPostAddress = document.createElement('p');
+//newOwnerPostAddress.setAttribute('style', 'display: none')
+newOwnerPostAddress.setAttribute('id', 'address')
+
 
 
 newOwnerPostDogName.textContent = `${OwnerPost.dog_name} `;
@@ -120,6 +127,7 @@ newOwnerPostPets.textContent = `Good with pets: ${OwnerPost.temperament_pets}`;
 newOwnerPostChildren.textContent = `Good with children: ${OwnerPost.temperament_children}`;
 newOwnerPostVaccination.textContent = `Vaccinated: ${OwnerPost.vaccination}`;
 newOwnerPostContact.textContent = `Contact: ${OwnerPost.owners_contact}`;
+newOwnerPostAddress.textContent = `${OwnerPost.owners_address}`;
 
     const formattedDate = new Date(OwnerPost.createdAt).toLocaleDateString();
 
@@ -142,6 +150,8 @@ newOwnerPostCardBody.append(newOwnerPostChildren);
 newOwnerPostCardBody.append(newOwnerPostVaccination);
 newOwnerPostCardBody.append(newOwnerPostContact);
 newOwnerPostCardBody.append(newOwnerPostBody);
+newOwnerPostCardBody.append(newOwnerPostAddress);
+
 newOwnerPostCard.append(newOwnerPostCardHeading);
 newOwnerPostCard.append(newOwnerPostCardBody);
 newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost));
@@ -149,12 +159,12 @@ newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost));
 
     postContainer.append(newOwnerPostCard);
 
-    owners_address = OwnerPost.owners_address;
-    address.push(owners_address)
+   // address = OwnerPost.owners_address;
+    //address.push(owners_address)
 
 
   }
-  }
+  //console.log(OwnerPost)
     {{!-- const initializeRows = () => {
     postContainer.innerHTML = '';
 
@@ -188,23 +198,25 @@ postContainer.append(dogMap) --}}
 
 
   <script> 
-      console.log(address)
-    console.log("its hitting");
+//    console.log("its hitting");
     let map;
-    function initMap() {
-      //const address = document.getElementById("owners_address").value;
+    function initMap(address) {
+      //const address = document.getElementById("address").value;
+      console.log(address)
       const geocoder = new google.maps.Geocoder();
-      const owners_address = "318 West 39th Street, New York, NY";
+//      const owners_address = "318 West 39th Street, New York, NY";
 
       fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${owners_address}&key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM`
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM`
       )
         .then((resp) => resp.json())
         .then((response) => {
+            console.log(response)
           map = new google.maps.Map(document.getElementById("map"), {
             center: response.results[0].geometry.location,
             zoom: 12,
           });
+          console.log(response.results[0].geometry.location)
           var marker = new google.maps.Marker({
             map: map,
             position: response.results[0].geometry.location,
