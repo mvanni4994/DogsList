@@ -1,3 +1,16 @@
+const address = fetch(`/api/ownerposts${OwnerId}`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    address = data.owners_address;
+    console.log('Success in getting owners_address:', data.owners_address);
+  })
+  .catch((error) => console.error('Error:', error));
+
 
 function initMap() {
     var options = {
@@ -11,7 +24,6 @@ function initMap() {
     });
   }
   function geocodeAddress(geocoder, resultsMap) {
-    const address = document.getElementById('address').value;
     geocoder.geocode({ address: address }, (results, status) => {
       if (status === 'OK') {
         resultsMap.setCenter(results[0].geometry.location);

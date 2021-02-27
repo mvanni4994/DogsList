@@ -17,17 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const temperamentChildrenInput = document.getElementsByClassName('temperament-children');
   const vaccinationInput = document.getElementsByClassName('vaccination');
   const ownersContactInput = document.getElementById('owners-contact');
+  const ownersAddressInput = document.getElementById('owners-address');
   const bodyInput = document.getElementById('body');
-
+  // const ownerNameInput = document.getElementById('owner-name');
   const cmsForm = document.getElementById('cms');
   const ownerSelect = document.getElementById('owner');
 
   // Get query parameter
   const url = window.location.search;
   let OwnerPostId;
-  let OwnerId;
+  let OwnerName;
   let updating = false;
 
+
+console.log(ownerSelect.value)
   // Get post data for editing/adding
   const getOwnerPostData = (id, type) => {
     const queryUrl =
@@ -49,12 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
           dogBreedInput.value = data.dog_breed;
           dogAgeInput.value = data.dog_age;
           dogSizeInput.value = data.dog_size;
-          boroughInput = data.borough
+          boroughInput = data.borough;
           temperamentPetsInput = data.temperament_pets;
           temperamentChildrenInput = data.temperament_children;
           vaccinationInput = data.vaccinations;
+          ownersContactInput = data.owners_contact;
           bodyInput = data.body;
-          OwnerId = data.OwnerId || data.id;
+          OwnerName = data.OwnerName || data.name;
 
           // We are updating
           updating = true;
@@ -69,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
     getOwnerPostData(OwnerPostId, 'post');
   }
   // Otherwise if we have an owner_id in our url, preset the owner select box to be our Owner
-  else if (url.indexOf('?owner_id=') !== -1) {
-    OwnerId = url.split('=')[1];
+  else if (url.indexOf('?owner_name=') !== -1) {
+    OwnerName = url.split('=')[1];
   }
 
   // Event handler for when the post for is submitted
@@ -81,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (
       !dogNameInput.value.trim() ||
       !dogBreedInput.value.trim() ||
-      !ownerSelect.value
+      !ownerSelect.value.trim()
     ) {
       return;
     }
@@ -97,8 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
       temperament_children: temperamentChildrenInput.value,
       vaccinations: vaccinationInput.value,
       owners_contact: ownersContactInput.value.trim(),
+      owners_address: ownersAddressInput.value.trim(),
+
       body: bodyInput.value.trim(),
-      OwnerId: ownerSelect.value,
+      OwnerName: ownerSelect.value.trim(),
+      
     };
 
     // Update a post if flag is true, otherwise submit a new one
@@ -142,12 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     data.forEach((owner) => rowsToAdd.push(createOwnerRow(owner)));
 
-    ownerSelect.innerHTML = '';
+    // ownerSelect.innerHTML = '';
     console.log('renderOwnerList -> rowsToAdd', rowsToAdd);
     console.log('ownerSelect', ownerSelect);
 
     rowsToAdd.forEach((row) => ownerSelect.append(row));
-    ownerSelect.value = OwnerId;
+    // ownerSelect.value = OwnerName;
   };
 
   // Build owner dropdown
@@ -181,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
       headers: {
         'Content-Type': 'application/json',
       },
+
       body: JSON.stringify(ownerpost),
     })
       .then(() => {
