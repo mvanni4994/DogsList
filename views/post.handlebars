@@ -17,22 +17,219 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 	{{!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> --}}
+
+    <link
+      rel="stylesheet"
+      href="css/styles.css"
+      media="screen"
+      title="no title"
+    />
+    <style>
+      #map {
+        width: 400px;
+        height: 400px;
+      }
+    </style>
 </head>
 
 
 <body>
     <div class="container blog">
-    <div class="row" style="background: blue">
-        <p>Hello</p>
-      <div class="col-md-12 post-container" >
+    <div class="row" >
+      <div class="col-md-12 post-container">
       </div>
     </div>
   </div>
+  <div id="map">
+
+  </div>
+  <script>
+const postContainer = document.querySelector('.post-container');
+
+const url = window.location.search;
+
+let PostId = url.split('=')[1];
+
+  getPost(PostId);
+  console.log(PostId)
+let owners_address;
+  function getPost(id) {
+        let OwnerPost;
+
+    PostId = id || '';
+    // if (PostId) {
+    //     PostID = 
+    // //   PostId = `/?owners_id=${OwnerId}`;
+    // 
+    fetch(`/api/ownerposts${PostId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            OwnerPost = data;
+            console.log('Success in getting ownerPosts:', data);
+            if (!data || !data.length) {
+                displayEmpty(owner);
+            } else {
+                {{!-- initializeRows(); --}}
+                console.log(data)
+                createNewRow(data)
+            }
+        })
+        .catch((error) => console.error('Error:', error));
+  
+  const createNewRow = (OwnerPost) => {
+      console.log(OwnerPost[0].dog_name)
+
+    const newOwnerPostCard = document.createElement('div');
+    newOwnerPostCard.classList.add('card');
+
+    const newOwnerPostCardHeading = document.createElement('div');
+    newOwnerPostCardHeading.classList.add('card-header');
+
+    const newOwnerPostDogName = document.createElement('h2');
+    const newOwnerPostDate = document.createElement('small');
+    const newOwnerPostOwner = document.createElement('h5');
+
+    const newOwnerPostCardBody = document.createElement('div');
+    newOwnerPostCardBody.classList.add('card-body');
+
+const newOwnerPostBreed = document.createElement('p');
+const newOwnerPostAge = document.createElement('p');
+const newOwnerPostSize = document.createElement('p');
+const newOwnerPostBorough = document.createElement('p');
+const newOwnerPostPets = document.createElement('p');
+const newOwnerPostChildren = document.createElement('p');
+const newOwnerPostVaccination = document.createElement('p');
+const newOwnerPostContact = document.createElement('p');
+const newOwnerPostBody = document.createElement('p');
+
+
+newOwnerPostDogName.textContent = `${OwnerPost[0].dog_name} `;
+newOwnerPostBreed.textContent = `Breed: ${OwnerPost[0].dog_breed}`;
+newOwnerPostAge.textContent = `Age: ${OwnerPost[0].dog_age}`;
+newOwnerPostSize.textContent = `Size: ${OwnerPost[0].dog_size}`;
+newOwnerPostBorough.textContent = `Location: ${OwnerPost[0].borough}`;
+newOwnerPostPets.textContent = `Good with pets: ${OwnerPost[0].temperament_pets}`;
+newOwnerPostChildren.textContent = `Good with children: ${OwnerPost[0].temperament_children}`;
+newOwnerPostVaccination.textContent = `Vaccinated: ${OwnerPost[0].vaccination}`;
+newOwnerPostContact.textContent = `Contact: ${OwnerPost[0].owners_contact}`;
+
+    const formattedDate = new Date(OwnerPost[0].createdAt).toLocaleDateString();
+
+newOwnerPostBody.textContent = OwnerPost[0].body;
+newOwnerPostDate.textContent = ` (${formattedDate})`;
+newOwnerPostDogName.append(newOwnerPostDate);
+// newOwnerPostCardHeading.append(deleteBtn);
+// newOwnerPostCardHeading.append(editButton);
+newOwnerPostCardHeading.append(newOwnerPostDogName);
+newOwnerPostCardHeading.append(newOwnerPostOwner);
+
+//append here
+newOwnerPostCardBody.append(newOwnerPostBreed);
+
+newOwnerPostCardBody.append(newOwnerPostAge);
+newOwnerPostCardBody.append(newOwnerPostSize);
+newOwnerPostCardBody.append(newOwnerPostBorough);
+newOwnerPostCardBody.append(newOwnerPostPets);
+newOwnerPostCardBody.append(newOwnerPostChildren);
+newOwnerPostCardBody.append(newOwnerPostVaccination);
+newOwnerPostCardBody.append(newOwnerPostContact);
+newOwnerPostCardBody.append(newOwnerPostBody);
+newOwnerPostCard.append(newOwnerPostCardHeading);
+newOwnerPostCard.append(newOwnerPostCardBody);
+newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost[0]));
+    postContainer.innerHTML = '';
+
+    postContainer.append(newOwnerPostCard);
+
+    owners_address = OwnerPost[0].owners_address;
+
+
+  }
+  }
+    {{!-- const initializeRows = () => {
+    postContainer.innerHTML = '';
+
+    postContainer.append(newOwnerPostCard);
+  }; --}}
+
+
+{{!-- const dogMap = document.createElement('div');
+dogMap.setAttribute('id', 'map');
+dogMap.setAttribute('style', 'height: 300px')
+dogMap.setAttribute('style', 'background-color: blue')
+postContainer.append(dogMap) --}}
+
+console.log(owners_address)
+
+  {{!-- </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script> --}}
+    console.log("its hitting");
+    let map;
+    function initMap() {
+      //const address = document.getElementById("owners_address").value;
+      const geocoder = new google.maps.Geocoder();
+      const owners_address = "318 West 39th Street, New York, NY";
+
+      fetch(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${owners_address}&key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM`
+      )
+        .then((resp) => resp.json())
+        .then((response) => {
+          map = new google.maps.Map(document.getElementById("map"), {
+            center: response.results[0].geometry.location,
+            zoom: 12,
+          });
+          var marker = new google.maps.Marker({
+            map: map,
+            position: response.results[0].geometry.location,
+            // icon: "public/css/..",
+            // animation: google.maps.Animation.BOUNCE,
+            draggable: true,
+            // 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          });
+          var marker = new google.maps.Marker;
+          var infoWindow = new google.maps.InfoWindow({
+            content: "<h1>Dogslist</h1>",
+          });
+          marker.addListener("click", function () {
+            infoWindow.open(map, marker);
+          });
+        });
+    }
+    </script>
 
 
     
-		<script src="js/dogMaps.js" type="text/javascript"></script>
-		<script src="js/post.js" type="text/javascript"></script>
+		{{!-- <script src="js/dogMaps.js" type="text/javascript"></script> --}}
+		{{!-- <script src="js/post.js" type="text/javascript"></script> --}}
+        <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM&callback=initMap"
+    type="text/javascript"
+  ></script>
 </body>
 
 </html>
