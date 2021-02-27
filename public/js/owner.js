@@ -25,16 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!nameInput.value.trim()) {
       alert('Please provide an owner name');
       return;
+
     }
 
     insertOwner({
       name: nameInput.value.trim(),
     });
+     
+    redirect()
+
   };
 
   document
     .getElementById('owner-form')
     .addEventListener('submit', handleOwnerFormSubmit);
+    
+  const returnOwner = document.getElementById('return-owner')
+  returnOwner.addEventListener('click', redirect)
+
+  function redirect() {
+    window.location.href = '/cms';
+
+  }
 
   // Event handler for the delete owner button
   const handleDeleteButtonPress = (e) => {
@@ -124,6 +136,10 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((data) => {
         // console.log('Success in getting owners:', owners);
         const rowsToAdd = [];
+        // for (let i = 0; i < data.length; i++) {
+          // rowsToAdd.push(createOwnerRow(data[data.length-1]));
+        // }
+
         for (let i = 0; i < data.length; i++) {
           rowsToAdd.push(createOwnerRow(data[i]));
         }

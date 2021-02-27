@@ -16,7 +16,7 @@
         <a class="btn btn-light" href="/ownerposts">Go to Blog</a>
       </div>
       <div class="col-md-2 col-sm-2">
-        <a class="btn btn-light" href="/owners">Manage Owners</a>
+        <a class="btn btn-light" href="/owners">New Owners</a>
       </div>
     </div>
 		<div class="row">
@@ -36,9 +36,20 @@
 						<label for="dog-size">Dog Size:</label>
 						<input placeholder="Enter Dog Size" type="text" class="form-control" id="dog-size">
 						<br />
-						<label for="borough">Borough:</label>
-						<input placeholder="Enter Borough" type="text" class="form-control" id="borough">
+						<div class="form-group">
+							<label for="category">Select Borough:</label>
+							<select class="custom-select" id="borough">
+								<option>Manhattan</option>
+								<option>Brooklyn</option>
+								<option>Queens</option>
+								<option>Bronx</option>
+								<option>Staten Island</option>
+
+  						</select>
+						</div>
 						<br />
+						    <div class="form-group">
+
 						<label for="temperament-pets">Dog Temperament with Pets:</label>
 						<!-- <input placeholder="How does your dog behave with pets?" type="text" class="form-control" id="temperament-pets"> -->
 						<br />
@@ -46,13 +57,19 @@
 						<input type="radio" class="temperament-pets" name="bad" value="0" id="bad-pets"> Not Always Great
 						<br />
 						<br />
+						    </div>
+						    <div class="form-group">
+
 						<label for="temperament-children">Dog Temperament with Children:</label>
 						<!-- <input placeholder="How does your dog behave with children?" type="text" class="form-control" id="temperament-children"> -->
 						<br />
 						<input type="radio" class="temperament-children" name="good" value="1" id="good-children"> Very Good<br>
 						<input type="radio" class="temperament-children" name="bad" value="0" id="bad-children"> Not always great
 						<br />
+						    </div>
 						<br />
+						    <div class="form-group">
+
 						<label for="vaccination">Vaccination:</label>
 						<!-- <input placeholder="change to checkbox" type="text" class="form-control" id="vaccination"> -->
 						
@@ -61,7 +78,7 @@
 						<input type="radio" class="vaccination" name="not-vaccinated" value="0" id="not-vaccinated"> Not Vaccinated
 						<br />
 						<br />
-
+						    </div>
 						<label for="owners-contact">Owner's Contact:</label>
 						<input placeholder="Enter Email" type="text" class="form-control" id="owners-contact">
 						<br />
@@ -75,12 +92,13 @@
 						<label for="body">Body:</label>
 						<textarea placeholder="Enter Post" class="form-control" rows="10" id="body"></textarea>
 						<div class="form-group">
-						<label for="owner-name">Owner Name:</label>
-                        <input placeholder="Enter Your Name" type="text" class="form-control" id="owner-name">
+						<label for="owner-">Owner Name:</label>
+                        <input placeholder="Enter Your Name" type="text" class="form-control" id="owner">
                         <br />
   						</select>
 						</div>
 						<br />
+
 						<label for="owners-address">Owner's Address:</label>
                         <input placeholder="Enter Address" type="text" class="form-control" id="owners-address">
                         <br />
