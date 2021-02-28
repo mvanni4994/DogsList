@@ -1,4 +1,5 @@
 var AWS = require('aws-sdk');
+const fs = require('fs')
 var s3 = new AWS.S3({
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
@@ -7,25 +8,26 @@ var s3 = new AWS.S3({
 
 module.exports = (app) => {
     app.post("/api/assets/upload", (req, res) => {
-        console.log("UPLOADBODY", req)
-        var params = {
-            Key: 'hello',
-            Bucket: "dogslistproject2",
-            Body: "hello"
-        };
-        s3.putObject(params, function put(err, data) {
-            if (err) {
-                console.log("PUT ERROR", err, err.stack);
-                return;
-            } else {
-                console.log("PUTSUCESS", data);
-            }
-            delete params.Body;
-            s3.getObject(params, function put(err, data) {
-                if (err) console.log("GETERROR", err, err.stack);
-                else console.log("GETSUCESS", data);
-                console.log("GETBODY", data.Body.toString());
+        console.log("UPLOADBODY", req.files)
+        const file = fs.readFile(req.files.dogpictures.tempFilePath, function(err, data) {
+            var params = {
+                Key: req.files.dogpictures.name,
+                Bucket: "dogslistproject2",
+                Body: data,
+                ACL: 'public-read'
+            };
+            s3.putObject(params, function put(err, data) {
+                if (err) {
+                    console.log("PUT ERROR", err, err.stack);
+                    return;
+                } else {
+                    console.log("PUTSUCESS");
+                }
+                delete params.Body;
             });
-        });
+            const imgUrl = `https://doglistproject2.s3.amazonaws.com/${req.files.dogpictures.name}`
+            console.log(imgUrl)
+                // Put the creating code here for the form 
+        })
     })
 }

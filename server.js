@@ -5,6 +5,7 @@ const htmlRouter = require('./routes/html-routes.js');
 const ownerRouter = require('./routes/owner-api-routes.js');
 const apiRouter = require('./routes/post-api-routes.js');
 const s3Router = require('./routes/s3-api-routes.js')
+const fileUpload = require('express-fileupload')
     // Sets up the Express App
 
 const app = express();
@@ -17,6 +18,11 @@ const db = require('./models');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(fileUpload({
+    useTempFiles: true,
+    tempFileDir: '/tmp'
+}))
 
 // Static directory
 app.use(express.static('public'));
