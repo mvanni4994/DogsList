@@ -6,6 +6,18 @@ const show = (el) => {
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded! 🚀');
+  let filename;
+  document.querySelector(".dogimage").addEventListener("change", function(event) {
+    console.log("working")
+    const files = document.querySelector(".dogimage").files
+    const formData = new FormData()
+    formData.append("dogpictures", files[0])
+    filename = files[0].name
+    fetch("http://localhost:8080/api/assets/upload", {
+        method: "POST",
+        body: formData
+    })
+})
 
   // Get references to the body, title, form and owner
   const dogBreedInput = document.getElementById('dog-breed');
@@ -111,7 +123,7 @@ console.log(ownerSelect.value)
       owners_address: ownersAddressInput.value.trim(),
 
       body: bodyInput.value.trim(),
-      dog_image: dogImageInput.value,
+      dog_image: `https://dogslistproject2.s3.amazonaws.com/${filename}`,
       OwnerName: ownerSelect.value.trim(),
       
     };

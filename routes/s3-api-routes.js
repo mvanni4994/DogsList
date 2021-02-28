@@ -24,10 +24,7 @@ module.exports = (app) => {
                     console.log("PUTSUCESS");
                 }
                 delete params.Body;
-            });
-            const imgUrl = `https://doglistproject2.s3.amazonaws.com/${req.files.dogpictures.name}`
-            console.log(imgUrl)
-                // Put the creating code here for the form 
+            }); 
         })
     })
 }

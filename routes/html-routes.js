@@ -1,5 +1,7 @@
 // Dependencies
 const path = require('path');
+const db = require('../models');
+
 
 // Routes
 module.exports = (app) => {
@@ -31,7 +33,20 @@ module.exports = (app) => {
 
     //To load each individual post
     app.get('/post/=:id', (req, res) =>
-    res.render("post")
+    {
+        db.OwnerPost.findOne({
+            where: {
+                id: req.params.id,
+            },
+            include: [db.Owner],
+        }).then((dbOwnerPost) => {
+           res.render('post', {
+               post: dbOwnerPost.dataValues
+           })
+        });
+        
+
+    }
 );
 
 
