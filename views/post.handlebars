@@ -38,6 +38,9 @@
 
     <div class="row" >
       <div class="col-md-12 post-container">
+        <div>
+          <p>{{post.owners_address}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -47,69 +50,20 @@
    
  
 
-
+</body>
     
 		{{!-- <script src="js/dogMaps.js" type="text/javascript"></script> --}}
 		{{!-- <script src="js/post.js" type="text/javascript"></script> --}}
-    <script
-    async
-    defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM&callback=initMap"
-    type="text/javascript"
-  ></script>
+
 
   <script>
-const postContainer = document.querySelector('.post-container');
-var address;
-const url = window.location.href;
-//const address = []
-let PostId = url.split('=')[1];
-console.log(url)
-console.log(PostId)
-
-  getPost(PostId);
-  console.log(PostId)
-let owners_address;
-  function getPost(id) {
-        let OwnerPost;
-
-    PostId = id || '';
-    // if (PostId) {
-    //     PostID = 
-    // //   PostId = `/?owners_id=${OwnerId}`;
-    // 
-    console.log(id)
-    fetch(`/api/ownerposts/${PostId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            OwnerPost = data;
-            console.log('Success in getting ownerPosts:', data);
-            {{!-- if (!data || !data.length) {
-                displayEmpty(owner);
-            } else { --}}
-                {{!-- initializeRows(); --}}
-                console.log(data)
-                createNewRow(data)
-                initMap(data.owners_address)
-            {{!-- } --}}
-        })
-        .catch((error) => console.error('Error:', error));
-  }
-  ///// MAPS HERE
-      let map;
-    function initMap(address) {
+    let map;
       //const address = document.getElementById("address").value;
-      console.log(address)
+     function initMap(){
       const geocoder = new google.maps.Geocoder();
 //      const owners_address = "318 West 39th Street, New York, NY";
-
       fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM`
+        `https://maps.googleapis.com/maps/api/geocode/json?address={{post.owners_address}}&key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM`
       )
         .then((resp) => resp.json())
         .then((response) => {
@@ -145,124 +99,18 @@ let owners_address;
             radius: 600,
           });
         });
-    }
-
-  //MAP ENDS HERE
-  
-  const createNewRow = (OwnerPost) => {
-      console.log(OwnerPost.dog_name)
-
-    const newOwnerPostCard = document.createElement('div');
-    newOwnerPostCard.classList.add('card');
-
-    const newOwnerPostCardHeading = document.createElement('div');
-    newOwnerPostCardHeading.classList.add('card-header');
-
-    const newOwnerPostDogName = document.createElement('h2');
-    const newOwnerPostDate = document.createElement('small');
-    const newOwnerPostOwner = document.createElement('h5');
-
-    const newOwnerPostCardBody = document.createElement('div');
-    newOwnerPostCardBody.classList.add('card-body');
-
-const newOwnerPostBreed = document.createElement('p');
-const newOwnerPostAge = document.createElement('p');
-const newOwnerPostSize = document.createElement('p');
-const newOwnerPostBorough = document.createElement('p');
-const newOwnerPostPets = document.createElement('p');
-const newOwnerPostChildren = document.createElement('p');
-const newOwnerPostVaccination = document.createElement('p');
-const newOwnerPostContact = document.createElement('p');
-const newOwnerPostBody = document.createElement('p');
-const newOwnerPostAddress = document.createElement('p');
-newOwnerPostAddress.setAttribute('style', 'display: none')
-newOwnerPostAddress.setAttribute('id', 'address')
-
-
-
-newOwnerPostDogName.textContent = `${OwnerPost.dog_name} `;
-newOwnerPostBreed.textContent = `Breed: ${OwnerPost.dog_breed}`;
-newOwnerPostAge.textContent = `Age: ${OwnerPost.dog_age}`;
-newOwnerPostSize.textContent = `Size: ${OwnerPost.dog_size}`;
-newOwnerPostBorough.textContent = `Location: ${OwnerPost.borough}`;
-newOwnerPostPets.textContent = `Good with pets: ${OwnerPost.temperament_pets}`;
-newOwnerPostChildren.textContent = `Good with children: ${OwnerPost.temperament_children}`;
-     if (OwnerPost.vaccinations) {
-     newOwnerPostVaccination.textContent = `Vaccinated: Yes`;
-     } else {
-      newOwnerPostVaccination.textContent = `Vaccinated: No`;
      }
-newOwnerPostContact.textContent = `Contact: ${OwnerPost.owners_contact}`;
-newOwnerPostAddress.textContent = `${OwnerPost.owners_address}`;
-
-    const formattedDate = new Date(OwnerPost.createdAt).toLocaleDateString();
-
-newOwnerPostBody.textContent = OwnerPost.body;
-newOwnerPostDate.textContent = ` (${formattedDate})`;
-newOwnerPostDogName.append(newOwnerPostDate);
-// newOwnerPostCardHeading.append(deleteBtn);
-// newOwnerPostCardHeading.append(editButton);
-newOwnerPostCardHeading.append(newOwnerPostDogName);
-newOwnerPostCardHeading.append(newOwnerPostOwner);
-
-//append here
-newOwnerPostCardBody.append(newOwnerPostBreed);
-
-newOwnerPostCardBody.append(newOwnerPostAge);
-newOwnerPostCardBody.append(newOwnerPostSize);
-newOwnerPostCardBody.append(newOwnerPostBorough);
-newOwnerPostCardBody.append(newOwnerPostPets);
-newOwnerPostCardBody.append(newOwnerPostChildren);
-newOwnerPostCardBody.append(newOwnerPostVaccination);
-newOwnerPostCardBody.append(newOwnerPostContact);
-newOwnerPostCardBody.append(newOwnerPostBody);
-newOwnerPostCardBody.append(newOwnerPostAddress);
-
-newOwnerPostCard.append(newOwnerPostCardHeading);
-newOwnerPostCard.append(newOwnerPostCardBody);
-newOwnerPostCard.setAttribute('data-post', JSON.stringify(OwnerPost));
-    postContainer.innerHTML = '';
-
-    postContainer.append(newOwnerPostCard);
-
-   // address = OwnerPost.owners_address;
-    //address.push(owners_address)
-
-
-  }
-  //console.log(OwnerPost)
-    {{!-- const initializeRows = () => {
-    postContainer.innerHTML = '';
-
-    postContainer.append(newOwnerPostCard);
-  }; --}}
-
-
-{{!-- const dogMap = document.createElement('div');
-dogMap.setAttribute('id', 'map');
-dogMap.setAttribute('style', 'height: 300px')
-dogMap.setAttribute('style', 'background-color: blue')
-postContainer.append(dogMap) --}}
-
-
+    
   </script>
+    <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM&callback=initMap"
+    type="text/javascript"
+  ></script>
+ 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
 
 </html>
