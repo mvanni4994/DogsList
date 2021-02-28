@@ -13,9 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const dogAgeInput = document.getElementById('dog-age');
   const dogSizeInput = document.getElementById('dog-size');
   const boroughInput = document.getElementById('borough');
-  const temperamentPetsInput = document.getElementsByClassName('temperament-pets');
-  const temperamentChildrenInput = document.getElementsByClassName('temperament-children');
-  const vaccinationInput = document.getElementsByClassName('vaccination');
+  const temperamentPetsInput = document.getElementById('temperament-pets');
+  const temperamentChildrenInput = document.getElementById('temperament-children');
+  const vaccinationInput = document.getElementById('vaccination');
   const ownersContactInput = document.getElementById('owners-contact');
   const ownersAddressInput = document.getElementById('owners-address');
   const bodyInput = document.getElementById('body');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let OwnerPostId;
   let OwnerName;
   let updating = false;
-
+console.log(vaccinationInput)
 
 console.log(ownerSelect.value)
   // Get post data for editing/adding
