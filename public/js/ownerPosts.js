@@ -127,7 +127,11 @@ document.addEventListener('DOMContentLoaded', () => {
      newOwnerPostBorough.textContent = `Location: ${ownerpost.borough}`;
      newOwnerPostPets.textContent = `Good with pets: ${ownerpost.temperament_pets}`;
      newOwnerPostChildren.textContent = `Good with children: ${ownerpost.temperament_children}`;
-     newOwnerPostVaccination.textContent = `Vaccinated: ${ownerpost.vaccination}`;
+     if (ownerpost.vaccinations) {
+     newOwnerPostVaccination.textContent = `Vaccinated: Yes`;
+     } else {
+      newOwnerPostVaccination.textContent = `Vaccinated: No`;
+     }
      newOwnerPostContact.textContent = `Contact: ${ownerpost.owners_contact}`;
 
     newOwnerPostBody.textContent = ownerpost.body;
@@ -141,14 +145,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //append here
     newOwnerPostCardBody.append(newOwnerPostBreed);
 
-    newOwnerPostCardBody.append(newOwnerPostAge);
-    newOwnerPostCardBody.append(newOwnerPostSize);
+    // newOwnerPostCardBody.append(newOwnerPostAge);
+    // newOwnerPostCardBody.append(newOwnerPostSize);
     newOwnerPostCardBody.append(newOwnerPostBorough);
-    newOwnerPostCardBody.append(newOwnerPostPets);
-    newOwnerPostCardBody.append(newOwnerPostChildren);
-    newOwnerPostCardBody.append(newOwnerPostVaccination);
-    newOwnerPostCardBody.append(newOwnerPostContact);
-    newOwnerPostCardBody.append(newOwnerPostBody);
+    // newOwnerPostCardBody.append(newOwnerPostPets);
+    // newOwnerPostCardBody.append(newOwnerPostChildren);
+    // newOwnerPostCardBody.append(newOwnerPostVaccination);
+    // newOwnerPostCardBody.append(newOwnerPostContact);
+    // newOwnerPostCardBody.append(newOwnerPostBody);
     newOwnerPostCard.append(newOwnerPostCardHeading);
     newOwnerPostCard.append(newOwnerPostCardBody);
     newOwnerPostCard.setAttribute('data-post', JSON.stringify(ownerpost));
