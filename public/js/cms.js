@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const formData = new FormData()
     formData.append("dogpictures", files[0])
     filename = files[0].name
-    // fetch("http://localhost:8080/api/assets/upload", {
-      fetch("https://afternoon-gorge-92220.herokuapp.com/api/assets/upload", {
+    fetch("http://localhost:8080/api/assets/upload", {
+      // fetch("https://afternoon-gorge-92220.herokuapp.com/api/assets/upload", {
         method: "POST",
         body: formData
     })
