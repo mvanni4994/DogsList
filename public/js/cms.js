@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     formData.append("dogpictures", files[0])
     filename = files[0].name
     fetch("http://localhost:8080/api/assets/upload", {
+      // fetch("https://afternoon-gorge-92220.herokuapp.com/api/assets/upload", {
         method: "POST",
         body: formData
     })
@@ -31,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const ownersContactInput = document.getElementById('owners-contact');
   const ownersAddressInput = document.getElementById('owners-address');
   const bodyInput = document.getElementById('body');
-  const dogImageInput = document.getElementsByClassName('dogimage');
   const cmsForm = document.getElementById('cms');
   const ownerSelect = document.getElementById('owner');
 
