@@ -26,6 +26,7 @@ app.use(fileUpload({
 
 // Static directory
 app.use(express.static('public'));
+app.use(express.static('views/assets')); 
 
 // Invoke routes
 htmlRouter(app);
