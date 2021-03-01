@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: nameInput.value.trim(),
     });
      
-    redirect()
+    // redirect()
 
   };
 
@@ -101,26 +101,26 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Helper function to render content when there are no owners
-  const renderEmpty = () => {
-    const alertDiv = document.createElement('div');
-    alertDiv.classList.add('alert', 'alert-danger');
-    alertDiv.textContent = 'Must have at least one owner to post';
-    alertDiv.id = 'removeMe';
-    alertDiv.style.marginRight = '5px';
-    return alertDiv;
-  };
+  // const renderEmpty = () => {
+  //   const alertDiv = document.createElement('div');
+  //   alertDiv.classList.add('alert', 'alert-danger');
+  //   alertDiv.textContent = 'Must have at least one owner to post';
+  //   alertDiv.id = 'removeMe';
+  //   alertDiv.style.marginRight = '5px';
+  //   return alertDiv;
+  // };
 
   const renderOwnerList = (rows) => {
     ownerList.innerHTML = '';
 
-    if (rows.length) {
-      if (document.getElementById('removeMe')) {
-        document.getElementById('removeMe').remove();
-      }
-      rows.forEach((row) => ownerList.append(row));
-    } else {
-      document.querySelector('.owner-container').appendChild(renderEmpty());
-    }
+    // if (rows.length) {
+    //   if (document.getElementById('removeMe')) {
+    //     document.getElementById('removeMe').remove();
+    //   }
+    //   rows.forEach((row) => ownerList.append(row));
+    // } else {
+    //   document.querySelector('.owner-container').appendChild(renderEmpty());
+    // }
   };
 
   // Grab all the owners
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log('Success in getting owners:', owners);
         const rowsToAdd = [];
         // for (let i = 0; i < data.length; i++) {
-          // rowsToAdd.push(createOwnerRow(data[data.length-1]));
+        //   rowsToAdd.push(createOwnerRow(data[data.length-1]));
         // }
 
         for (let i = 0; i < data.length; i++) {
