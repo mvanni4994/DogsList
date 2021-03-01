@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
       name: nameInput.value.trim(),
     });
      
-    // redirect()
+    redirect()
 
   };
 
