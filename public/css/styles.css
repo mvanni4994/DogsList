@@ -20,6 +20,12 @@ button.edit {
   margin: 5px;
 }
 
+.blog .btn{
+  background-color: #084a7a;
+  color:white;
+  border:none;
+}
+
 .owner-container {
   margin-top: 50px;
 }
@@ -28,12 +34,25 @@ button.edit {
   margin-top: 25px;
 }
 
-.blog-container {
+/* .blog-container {
   margin-top: 30px;
+} */
+
+.logo {
+  margin-top: 30px;
+  background-image: url('../assets/dogslist-landingpg-v3.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: bottom;
+  height:100%;
 }
 
 .blog {
   margin-top: 30px;
+  height:100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ac62a6;
 }
 
 .hidden {
@@ -48,4 +67,20 @@ button.edit {
 
 .top-30 {
   margin-top: 30px;
+}
+
+footer{
+  width:100%;
+  background-color: #ac62a6;
+  height: 50px;
+  color: white;
+}
+
+button {
+  background-color: #0d47a1;
+}
+
+#map {
+  width: 400px;
+  height: 400px;
 }
