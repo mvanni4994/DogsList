@@ -13,7 +13,7 @@ module.exports = (app) => {
     // );
 
     app.get('/', (req, res) =>
-    res.render("ownerblog"));
+        res.render("ownerblog"));
 
 
     // cms route loads cms.html
@@ -32,22 +32,20 @@ module.exports = (app) => {
     );
 
     //To load each individual post
-    app.get('/post/=:id', (req, res) =>
-    {
+    app.get('/post/=:id', (req, res) => {
         db.OwnerPost.findOne({
             where: {
                 id: req.params.id,
             },
             include: [db.Owner],
         }).then((dbOwnerPost) => {
-           res.render('post', {
-               post: dbOwnerPost.dataValues
-           })
+            res.render('post', {
+                post: dbOwnerPost.dataValues
+            })
         });
-        
 
-    }
-);
+
+    });
 
 
 };
