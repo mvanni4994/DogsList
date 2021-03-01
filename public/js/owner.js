@@ -41,7 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
     .addEventListener('submit', handleOwnerFormSubmit);
     
   const returnOwner = document.getElementById('return-owner')
-  returnOwner.addEventListener('click', redirect)
+  returnOwner.addEventListener('click', redirectPosts)
+
+  function redirectPosts() {
+    window.location.href = '/ownerposts';
+
+  }
+
 
   function redirect() {
     window.location.href = '/cms';
@@ -101,14 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Helper function to render content when there are no owners
-  const renderEmpty = () => {
-    const alertDiv = document.createElement('div');
-    alertDiv.classList.add('alert', 'alert-danger');
-    alertDiv.textContent = 'Must have at least one owner to post';
-    alertDiv.id = 'removeMe';
-    alertDiv.style.marginRight = '5px';
-    return alertDiv;
-  };
+  // const renderEmpty = () => {
+  //   const alertDiv = document.createElement('div');
+  //   alertDiv.classList.add('alert', 'alert-danger');
+  //   alertDiv.textContent = 'Must have at least one owner to post';
+  //   alertDiv.id = 'removeMe';
+  //   alertDiv.style.marginRight = '5px';
+  //   return alertDiv;
+  // };
 
   const renderOwnerList = (rows) => {
     ownerList.innerHTML = '';
@@ -136,9 +142,9 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((data) => {
         // console.log('Success in getting owners:', owners);
         const rowsToAdd = [];
-        // for (let i = 0; i < data.length; i++) {
-          // rowsToAdd.push(createOwnerRow(data[data.length-1]));
-        // }
+        for (let i = 0; i < data.length; i++) {
+          rowsToAdd.push(createOwnerRow(data[data.length-1]));
+        }
 
         for (let i = 0; i < data.length; i++) {
           rowsToAdd.push(createOwnerRow(data[i]));

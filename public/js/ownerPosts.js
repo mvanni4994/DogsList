@@ -85,16 +85,16 @@ document.addEventListener('DOMContentLoaded', () => {
     newOwnerPostCardHeading.classList.add('card-header');
 
     // Delete button
-    const deleteBtn = document.createElement('button');
-    deleteBtn.textContent = 'x';
-    deleteBtn.classList.add('delete', 'btn', 'btn-danger');
-    deleteBtn.addEventListener('click', handleOwnerPostDelete);
+    // const deleteBtn = document.createElement('button');
+    // deleteBtn.textContent = 'x';
+    // deleteBtn.classList.add('delete', 'btn', 'btn-danger');
+    // deleteBtn.addEventListener('click', handleOwnerPostDelete);
 
-    // Edit button
-    const editButton = document.createElement('button');
-    editButton.textContent = 'EDIT';
-    editButton.classList.add('edit', 'btn', 'btn-info');
-    editButton.addEventListener('click', handleOwnerPostEdit);
+    // // Edit button
+    // const editButton = document.createElement('button');
+    // editButton.textContent = 'EDIT';
+    // editButton.classList.add('edit', 'btn', 'btn-info');
+    // editButton.addEventListener('click', handleOwnerPostEdit);
 
     const newOwnerPostDogName = document.createElement('h2');
     const newOwnerPostDate = document.createElement('small');
@@ -137,8 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
     newOwnerPostBody.textContent = ownerpost.body;
     newOwnerPostDate.textContent = ` (${formattedDate})`;
     newOwnerPostDogName.append(newOwnerPostDate);
-    newOwnerPostCardHeading.append(deleteBtn);
-    newOwnerPostCardHeading.append(editButton);
+    // newOwnerPostCardHeading.append(deleteBtn);
+    // newOwnerPostCardHeading.append(editButton);
     newOwnerPostCardHeading.append(newOwnerPostDogName);
     newOwnerPostCardHeading.append(newOwnerPostOwner);
 
