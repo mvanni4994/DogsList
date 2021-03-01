@@ -52,7 +52,6 @@ button.edit {
   height:100vh;
   display: flex;
   flex-direction: column;
-  background-color: #ac62a6;
 }
 
 .hidden {
@@ -69,16 +68,21 @@ button.edit {
   margin-top: 30px;
 }
 
-footer{
+#footer {
   width:100%;
-  background-color: #ac62a6;
+  background-color: #299980
+  ;
   height: 50px;
   color: white;
+  align-items: baseline;
+  position: fixed;
 }
 
-button {
+button.btn {
   background-color: #0d47a1;
   color: white;
+  font-family: "Abril fatface", sans-serif;
+  outline: none;
 }
 
 #map {
