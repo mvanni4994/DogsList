@@ -8,19 +8,14 @@
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 	{{!-- <link rel="stylesheet" href="css/styles.css" media="screen" title="no title"> --}}
-
-    <link
-      rel="stylesheet"
-      href="css/styles.css"
-      media="screen"
-      title="no title"
-    />
-    <style>
+    <center>
+      <style>
       #map {
         width: 400px;
         height: 400px;
       }
     </style>
+    </center>
 </head>
 
 
@@ -29,15 +24,35 @@
 
     <div class="row" >
       <div class="col-md-12 post-container">
+        <br>
+        
           <div style="display:none;">{{post.owners_address}}</div>
-        <img src="{{post.dog_image}}"/>
+        <center><img allign="left" src="{{post.dog_image}}" width="500", height="500",/></center>
+          <br>
+         <center>
+            <div>
+           <h1>{{post.dog_name}}</h1>
+           <br>
+           <h4>Breed: {{post.dog_breed}}<h4>
+           <h4>Age: {{post.dog_age}}</h4>
+           <h4>Size: {{post.dog_size}}</h4>    
+           <h4>Temperament with other pets: {{post.temperament_pets}}</h4>
+           <h4>Temperament with children: {{post.temperament_children}}</h4>
+           <h4>Vaccinations: {{post.vaccinations}}</h4>   
+           <h4>Location: {{post.borough}}</h4>
+           <br>
+           <h3>Interested? Contact the owner at {{post.owners_contact}}</h1>   
       </div>
+      </center>
     </div>
   </div>
-  <div id="map">
+  
+  <center>
+
+ <div id="map">
 
   </div>
-   
+    </center>
  
 
 </body>
@@ -45,8 +60,7 @@
 		{{!-- <script src="js/dogMaps.js" type="text/javascript"></script> --}}
 		{{!-- <script src="js/post.js" type="text/javascript"></script> --}}
 
-
-  <script>
+ <script>
     let map;
       //const address = document.getElementById("address").value;
      function initMap(){
@@ -98,6 +112,7 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD35-m8-_Hv32QX27PliwEn8Y13cOphfSM&callback=initMap"
     type="text/javascript"
   ></script>
+
  
 
 
