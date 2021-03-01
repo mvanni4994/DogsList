@@ -126,6 +126,7 @@ function parseToken(token) {
 
 function notAuthorized(res) {
     return res.status(401).send({ errors: [{ title: 'Not authorized!', detail: 'You need to login to get access!' }] });
+
 }©
 2021 GitHub, Inc.
 Terms
@@ -139,3 +140,4 @@ API
 Training
 Blog
 About
+
