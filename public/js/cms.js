@@ -6,6 +6,19 @@ const show = (el) => {
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded! 🚀');
+  let filename;
+  document.querySelector(".dogimage").addEventListener("change", function(event) {
+    console.log("working")
+    const files = document.querySelector(".dogimage").files
+    const formData = new FormData()
+    formData.append("dogpictures", files[0])
+    filename = files[0].name
+    fetch("http://localhost:8080/api/assets/upload", {
+      // fetch("https://afternoon-gorge-92220.herokuapp.com/api/assets/upload", {
+        method: "POST",
+        body: formData
+    })
+})
 
   // Get references to the body, title, form and owner
   const dogBreedInput = document.getElementById('dog-breed');
@@ -13,13 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const dogAgeInput = document.getElementById('dog-age');
   const dogSizeInput = document.getElementById('dog-size');
   const boroughInput = document.getElementById('borough');
-  const temperamentPetsInput = document.getElementsByClassName('temperament-pets');
-  const temperamentChildrenInput = document.getElementsByClassName('temperament-children');
-  const vaccinationInput = document.getElementsByClassName('vaccination');
+  const temperamentPetsInput = document.getElementById('temperament-pets');
+  const temperamentChildrenInput = document.getElementById('temperament-children');
+  const vaccinationInput = document.getElementById('vaccination');
   const ownersContactInput = document.getElementById('owners-contact');
   const ownersAddressInput = document.getElementById('owners-address');
   const bodyInput = document.getElementById('body');
-  // const ownerNameInput = document.getElementById('owner-name');
   const cmsForm = document.getElementById('cms');
   const ownerSelect = document.getElementById('owner');
 
@@ -28,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let OwnerPostId;
   let OwnerName;
   let updating = false;
-
+console.log(vaccinationInput)
 
 console.log(ownerSelect.value)
   // Get post data for editing/adding
@@ -52,13 +64,14 @@ console.log(ownerSelect.value)
           dogBreedInput.value = data.dog_breed;
           dogAgeInput.value = data.dog_age;
           dogSizeInput.value = data.dog_size;
-          boroughInput = data.borough;
-          temperamentPetsInput = data.temperament_pets;
-          temperamentChildrenInput = data.temperament_children;
-          vaccinationInput = data.vaccinations;
-          ownersContactInput = data.owners_contact;
-          bodyInput = data.body;
-          OwnerName = data.OwnerName || data.name;
+          boroughInput.value = data.borough;
+          temperamentPetsInput.value = data.temperament_pets;
+          temperamentChildrenInput.value = data.temperament_children;
+          vaccinationInput.value = data.vaccinations;
+          ownersContactInput.value = data.owners_contact;
+          bodyInput.value = data.body;
+          OwnerName.value = data.OwnerName || data.name;
+
 
           // We are updating
           updating = true;
@@ -85,8 +98,14 @@ console.log(ownerSelect.value)
     if (
       !dogNameInput.value.trim() ||
       !dogBreedInput.value.trim() ||
-      !ownerSelect.value.trim()
+      !dogAgeInput.value.trim() ||
+      !dogSizeInput.value.trim() ||
+      !ownersContactInput.value.trim() ||
+      !bodyInput.value.trim() 
+      // !ownerSelect.value.trim()
     ) {
+      alert('Please make sure to fill out all the fields');
+
       return;
     }
 
@@ -104,6 +123,7 @@ console.log(ownerSelect.value)
       owners_address: ownersAddressInput.value.trim(),
 
       body: bodyInput.value.trim(),
+      dog_image: `https://dogslistproject2.s3.amazonaws.com/${filename}`,
       OwnerName: ownerSelect.value.trim(),
       
     };
