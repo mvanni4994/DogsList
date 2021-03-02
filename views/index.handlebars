@@ -1,41 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
+​
 <head>
 	<meta charset="UTF-8">
 	<title>CMS - Express</title>
 	<!-- Latest compiled and minified CSS & JS -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
+      <style>
+      label {
+		font-family: "Acme", sans-serif;
+        color: #084a7a;
+		font-size: 25px;
+      }
+​
+		.form-control {
+		height: 130px;
+		} 
+    </style>
+​
 </head>
-
-<body>
+​
+<body >
 	<div class="container hidden">
-		<div class="row top-30">
+		{{!-- <div class="row top-30">
       <div class="col-md-2 col-sm-2">
         <a class="btn btn-light" href="/ownerposts">Go to Blog</a>
       </div>
       <div class="col-md-2 col-sm-2">
         <a class="btn btn-light" href="/owners">New Owners</a>
       </div>
-    </div>
-		<div class="row">
-			<div class="col-md-6 offset-md-3">
+    </div> --}}
+		<div class="row dogcity" style="margin-bottom: 0px;">
+			<div class="col-md-5">
+​
 				<form id="cms">
+​
 					<div class="form-group">
+​
 						<label for="dog-name">Dog Name:</label>
 						<input placeholder="Enter Dog Name" type="text" class="form-control" id="dog-name">
 						<br />
 						<label for="dog-breed">Dog Breed:</label>
 						<input placeholder="Enter Dog Breed" type="text" class="form-control" id="dog-breed">
 						<br />
-
+​
 						<label for="dog-age">Dog Age:</label>
 						<input placeholder="Enter Dog Age" type="text" class="form-control" id="dog-age">
 						<br />
 						<label for="dog-size">Dog Size:</label>
 						<input placeholder="Enter Dog Size" type="text" class="form-control" id="dog-size">
 						<br />
+												<label for="owners-contact">Owner's Contact:</label>
+						<input placeholder="Enter Email" type="text" class="form-control" id="owners-contact">
+						<br />
+						<div class="form-group">
+						<label for="owner-">Owner's Name:</label>
+                        <input placeholder="Enter Your Name" type="text" class="form-control" id="owner">
+                        <br />
+  						</select>
+						</div>
+						
+​
+						<label for="owners-address">Owner's Address:</label>
+                        <input placeholder="Enter Address" type="text" class="form-control" id="owners-address">
+                        <br />
+					</div>
+					</div>
+					
+					<div class="col-md-5 offset-2">
+					<div class="form-group" style="margin-top: 50px;">
 						<div class="form-group">
 							<label for="category">Select Borough:</label>
 							<select class="custom-select" id="borough">
@@ -44,7 +78,7 @@
 								<option>Queens</option>
 								<option>Bronx</option>
 								<option>Staten Island</option>
-
+​
   						</select>
 						</div>
 						<br />
@@ -58,8 +92,11 @@
 								<option>Staten Island</option>
  --}}
   						</select>
+						
 						</div>
 								<br />
+								</div>
+​
 						<div>
 							<label for="category">Is your dog good with pets?</label>
 							<select class="custom-select" id="temperament-pets">
@@ -68,9 +105,11 @@
 								<option>So so</option>
 								<option>Discriminatory</option>
 								<option>Terrible</option>
-
+​
   						</select>
-						</div>		<br />
+						</div>		
+						<br />
+						<br/>
 						<div>
 							<label for="category">Is your dog good with children?</label>
 							<select class="custom-select" id="temperament-children">
@@ -81,38 +120,31 @@
 								<option>Murderer</option>
   						</select>
 						</div>
-
-
-						<label for="owners-contact">Owner's Contact:</label>
-						<input placeholder="Enter Email" type="text" class="form-control" id="owners-contact">
-						<br />
-						<label for="body">Body:</label>
-						<textarea placeholder="Enter Post" class="form-control" rows="10" id="body"></textarea>
-						<div class="form-group">
-						<label for="owner-">Owner Name:</label>
-                        <input placeholder="Enter Your Name" type="text" class="form-control" id="owner">
-                        <br />
-  						</select>
-						</div>
-						<br />
-
-						<label for="owners-address">Owner's Address:</label>
-                        <input placeholder="Enter Address" type="text" class="form-control" id="owners-address">
-                        <br />
-                          <i class="large material-icons">add_a_photo</i>
+						<br/>
+				<i class="large material-icons">add_a_photo</i> 
+											  
 						  <p>Upload a photo below!</p>
-                        <input type="file" class="dogimage" id="dogpic" name="avatar" accept="image/png, image/jpeg">
+                        <br/><input type="file" class="dogimage" id="dogpic" name="avatar" accept="image/png, image/jpeg">
+						<br/>
+						<br/>
+​
+						<label for="body">Post:</label>
+						<textarea placeholder="Enter Post" class="form-control" height="200px" id="body"></textarea>
+						<br />
 						<button type="submit" class="btn btn-success submit">Submit</button>
-					</div>
+​
+​
+​
 				</form>
 			</div>
 		</div>
 	</div>
+<img src="Dogs.png" style="width: 100%">
+{{!-- <img src="Dogslist-city.png" style="width: 100%"> --}}
+​
 	<!-- Custom Script -->
 	<script src="js/cms.js" type="text/javascript"></script>
-
+​
 </body>
-
+​
 </html>
-
-    
