@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ownersAddressInput = document.getElementById('owners-address');
   const bodyInput = document.getElementById('body');
   const cmsForm = document.getElementById('cms');
-  const ownerSelect = document.getElementById('owner');
+  const ownerName = document.getElementById('owner');
 
   // Get query parameter
   const url = window.location.search;
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let updating = false;
 console.log(vaccinationInput)
 
-console.log(ownerSelect.value)
+console.log(ownerName.value)
   // Get post data for editing/adding
   const getOwnerPostData = (id, type) => {
     const queryUrl =
@@ -101,6 +101,7 @@ console.log(ownerSelect.value)
       !dogAgeInput.value.trim() ||
       !dogSizeInput.value.trim() ||
       !ownersContactInput.value.trim() ||
+      !ownerName.value.trim() ||
       !bodyInput.value.trim() 
       // !ownerSelect.value.trim()
     ) {
@@ -121,10 +122,10 @@ console.log(ownerSelect.value)
       vaccinations: vaccinationInput.value,
       owners_contact: ownersContactInput.value.trim(),
       owners_address: ownersAddressInput.value.trim(),
+      owner_name: ownerName.value.trim(),
 
       body: bodyInput.value.trim(),
       dog_image: `https://dogslistproject2.s3.amazonaws.com/${filename}`,
-      OwnerName: ownerSelect.value.trim(),
       
     };
 
@@ -171,9 +172,9 @@ console.log(ownerSelect.value)
 
     // ownerSelect.innerHTML = '';
     console.log('renderOwnerList -> rowsToAdd', rowsToAdd);
-    console.log('ownerSelect', ownerSelect);
+    console.log('ownerName', ownerName);
 
-    rowsToAdd.forEach((row) => ownerSelect.append(row));
+    rowsToAdd.forEach((row) => ownerName.append(row));
     // ownerSelect.value = OwnerName;
   };
 
