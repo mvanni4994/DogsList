@@ -80,9 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(cardID)
       window.location.href = `/post/=${cardID}`;
     })
+    newOwnerPostCard.style.width = '120%'
+    newOwnerPostCard.style.height = "450px"
+    newOwnerPostCard.style.padding = "20px"
 
     const newOwnerPostCardHeading = document.createElement('div');
     newOwnerPostCardHeading.classList.add('card-header');
+    newOwnerPostCardHeading.setAttribute('style', 'font-family: "Acme", sans-serif; color: #084a7a;')
 
     // Delete button
     // const deleteBtn = document.createElement('button');
@@ -97,16 +101,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // editButton.addEventListener('click', handleOwnerPostEdit);
 
     const newOwnerPostDogName = document.createElement('h2');
-    const newOwnerPostDate = document.createElement('small');
-    const newOwnerPostOwner = document.createElement('h5');
+    const newOwnerPostDate = document.createElement('h7');
+    // const newOwnerPostOwner = document.createElement('h5');
 
-    // newOwnerPostOwner.textContent = `Written by: ${ownerpost.Owner.name}`;
-    newOwnerPostOwner.style.float = 'right';
-    newOwnerPostOwner.style.color = 'blue';
-    newOwnerPostOwner.style.marginTop = '-10px';
+    // newOwnerPostOwner.textContent = `Written by: ${ownerpost.owner_name}`;
+    // newOwnerPostOwner.style.float = 'right';
+    // newOwnerPostOwner.style.color = 'green';
+    // newOwnerPostOwner.style.marginTop = '-10px';
 
     const newOwnerPostCardBody = document.createElement('div');
     newOwnerPostCardBody.classList.add('card-body');
+    newOwnerPostCardBody.setAttribute('style', 'font-family: "Acme", sans-serif; color: #084a7a; font-size: 20px')
+
 
     const newOwnerPostBreed = document.createElement('p');
     const newOwnerPostAge = document.createElement('p');
@@ -117,6 +123,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const newOwnerPostVaccination = document.createElement('p');
     const newOwnerPostContact = document.createElement('p');
     const newOwnerPostBody = document.createElement('p');
+    const newOwnerPostPhoto = document.createElement('img')
+
+    newOwnerPostPhoto.setAttribute('src', `${ownerpost.dog_image}`)
+    newOwnerPostPhoto.setAttribute('style', 'width: 300px; height: 300px')
+    newOwnerPostPhoto.style.float = 'left'
 
 
 
@@ -135,19 +146,22 @@ document.addEventListener('DOMContentLoaded', () => {
      newOwnerPostContact.textContent = `Contact: ${ownerpost.owners_contact}`;
 
     newOwnerPostBody.textContent = ownerpost.body;
-    newOwnerPostDate.textContent = ` (${formattedDate})`;
-    newOwnerPostDogName.append(newOwnerPostDate);
+    newOwnerPostDate.textContent = `Posted on ${formattedDate} by ${ownerpost.owner_name}`;
+    newOwnerPostCardBody.append(newOwnerPostPhoto);
+
+    newOwnerPostCardBody.append(newOwnerPostDate);
     // newOwnerPostCardHeading.append(deleteBtn);
     // newOwnerPostCardHeading.append(editButton);
     newOwnerPostCardHeading.append(newOwnerPostDogName);
-    newOwnerPostCardHeading.append(newOwnerPostOwner);
+    // newOwnerPostCardHeading.append(newOwnerPostOwner);
 
     //append here
     newOwnerPostCardBody.append(newOwnerPostBreed);
 
-    // newOwnerPostCardBody.append(newOwnerPostAge);
+    newOwnerPostCardBody.append(newOwnerPostAge);
     // newOwnerPostCardBody.append(newOwnerPostSize);
     newOwnerPostCardBody.append(newOwnerPostBorough);
+
     // newOwnerPostCardBody.append(newOwnerPostPets);
     // newOwnerPostCardBody.append(newOwnerPostChildren);
     // newOwnerPostCardBody.append(newOwnerPostVaccination);

@@ -27,9 +27,9 @@ module.exports = (app) => {
     );
 
     // authors route loads author-manager.html
-    app.get('/owners', (req, res) =>
-        res.render("owners")
-    );
+    // app.get('/owners', (req, res) =>
+    //     res.render("owners")
+    // );
 
        //To load each individual post
     app.get('/post/=:id', (req, res) =>
@@ -48,6 +48,7 @@ module.exports = (app) => {
 
     }
 );
+
 
 
 };
