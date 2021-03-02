@@ -13,6 +13,10 @@
         color: #084a7a;
 		font-size: 25px;
       }
+
+		.form-control {
+		height: 130px;
+		} 
     </style>
 
 </head>
@@ -62,12 +66,10 @@
                         <input placeholder="Enter Address" type="text" class="form-control" id="owners-address">
                         <br />
 					</div>
-
-				</form>
-								</div>
-											<div class="col-md-5 offset-2">
-				<form id="cms">
-										<div class="form-group">
+					</div>
+					
+					<div class="col-md-5 offset-2">
+					<div class="form-group" style="margin-top: 50px;">
 						<div class="form-group">
 							<label for="category">Select Borough:</label>
 							<select class="custom-select" id="borough">
@@ -85,10 +87,6 @@
 							<select class="custom-select" id="vaccination">
 								<option value="1">Yes</option>
 								<option value="0">No</option>
-								{{!-- <option>Queens</option>
-								<option>Bronx</option>
-								<option>Staten Island</option>
- --}}
   						</select>
 						
 						</div>
