@@ -31,7 +31,7 @@ module.exports = (app) => {
     //     res.render("owners")
     // );
 
-    //To load each individual post
+       //To load each individual post
     app.get('/post/=:id', (req, res) =>
     {
         db.OwnerPost.findOne({
