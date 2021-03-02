@@ -14,6 +14,12 @@
         width: 400px;
         height: 400px;
       }
+      body {
+        		font-family: "Acme", sans-serif;
+        color: #084a7a;
+		{{!-- font-size: 25px; --}}
+
+      }
     </style>
     </center>
 </head>
@@ -45,8 +51,12 @@
             <h4>Vaccinations: No</h4>
            {{/if}}
            <h4>Location: {{post.borough}}</h4>
+           <br>           
+           <h4>{{post.body}}</h4>
            <br>
-           <h3>Interested? Contact {{post.owner_name}} at {{post.owners_contact}}</h1>   
+           <hr>
+
+           <h3>Interested? Contact {{post.owner_name}} at <a href="{{post.owners_contact}}">{{post.owners_contact}}</a></h1>   
 
       </div>
       </center>
