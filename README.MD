@@ -29,11 +29,11 @@ _SO I CAN_ give the dog a more suitable home (or provide a loving home and ease 
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
 
-##Feature 2
+##Owner Form to Rehome a Dog
 
-[!images/loremipsum.jpg]
+![Form for an owner to post a dog](./DogsList/views/assets/post-form.png)
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+When dog owners surrender their pets, they use this form to give DogsList as much information as possible about the animal. This detailed info about size,  helps dog seekers find the right pet.
 
 ##Feature 3
 
@@ -61,7 +61,7 @@ Application meets the following criteria:
 
 Project repo meets the following requirements:
 
-- Has a unique name.
+- Has a unique name: Dogslist  https://github.com/lauraaupert/DogsList
 - Follows best practices for file structure and naming conventions.
 - Contains multiple descriptive commit messages.
 
@@ -91,6 +91,7 @@ User experience meets the following guidelines:
 ##Melissa Kinsey
 - Proposed app concept
 - Wrote README
+— Wrote and designed presentation
 
 #LESSONS LEARNED
 
@@ -112,7 +113,7 @@ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
 #LICENSES
 
 ##Google Maps
-Copyright 20XX Google Inc. All rights reserved. Need to check this. 
+Copyright 2021 Google Inc. All rights reserved. 
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -127,4 +128,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ##Google Fonts
-The Lorem Ipsum font, designed by J Doe, is used courtesy of Google Fonts and licensed under a Creative Commons Attribution 4.0 License: License URL here
+The Acme font was designed by Juan Pablo del Peral, Huerta Tipográfica, is used courtesy of Google Fonts and licensed under a Creative Commons Attribution 4.0 License: License URL here
