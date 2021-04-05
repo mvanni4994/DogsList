@@ -117,7 +117,6 @@ User experience meets the following guidelines:
 - Proposed app concept
 - Wrote README
 - Wrote and designed presentation
-- Messed up code so Laura and Matt could practice debugging 
 
 
 # IMAGE CREDITS
