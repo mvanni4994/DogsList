@@ -22,17 +22,17 @@ We've designed a database app that uses the power of Google Maps to let New York
 
 # USER STORY (SEEKER)
 
-*AS  A* pale, anemic, bored, lonely, slightly doughy New Yorker
+*AS A* New Yorker
 *I WANT* a fluffy companion (the cuter, the better)
-*SO I* won’t have to stay holed up like a rat in my dank, depressing apartment
+*SO I* won’t have to stay holed up in my apartment
 *BECAUSE* doggoneit, people like me!
 
 # USER STORY (REHOMER)
 
-*AS A* stressed-out, impatient, heartless New York City a-hole
-*I WANT* to get rid of this f\*ing animal, already
-*SO I* won’t have to buy dog food (have you seen how much that sh\*t costs?), go for f\*ing walks (who does that?), and pick up its f\*ing poop
-*BECAUSE* I’m so over the whole “pet” thing
+*AS A* New Yorker
+*I WANT* to get rid of this animal, already
+*SO I* won’t have to buy dog food, go for walks, and pick up its poop
+*BECAUSE* I’m so over the whole “pet” thing, nor can I keep up with the financial responsibility.
 
 ![image](https://user-images.githubusercontent.com/73617474/109719713-0d560d00-7b77-11eb-8f78-946d3d62c77b.png)
 
