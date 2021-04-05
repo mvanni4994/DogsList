@@ -81,7 +81,7 @@ Project repo meets the following requirements:
 - Has a unique name: Dogslist
 - Follows best practices for file structure and naming conventions
 - Contains multiple descriptive commit messages.
-![Commit total on GitHub repo](./DogsList/views/assets/166-commits.png)
+
 
 # User Experience Standards
 
