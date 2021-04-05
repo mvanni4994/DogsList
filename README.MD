@@ -43,7 +43,7 @@ We've designed a database app that uses the power of Google Maps to let New York
 ![image](https://user-images.githubusercontent.com/73617474/109714821-de3c9d00-7b70-11eb-8827-76edfff2aa1f.png)
 
 
-A dog seeker can browse owner posts to find a pet that's a good fit--probably not this one.
+
 
 ## Rehome a Dog
 
@@ -52,8 +52,6 @@ A dog seeker can browse owner posts to find a pet that's a good fit--probably no
 When dog owners surrender their pets, they use this form to give DogsList as much information as possible about the animal. This detailed info about size,  helps dog seekers find the right pet.
 
 ## Upload a Photo
-
-![Jeff the rat dog](./DogsList/views/assets/Jeff-the-rat-dog.jpg]
 
 Owners upload pictures of their dogs, and pet seekers browse the listings to see if a photo catches their eye.
 
