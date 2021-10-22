@@ -1,10 +1,6 @@
 # DogsList	
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
-## INTRODUCTION
-
-This project was completed for the Columbia University Engineering Full-Stack Coding Boot Camp. Our mission was to conceive and execute a design that solves a real-world problem.
-
 # Background
 
 After COVID hit and quarantining began in March 2020, many people and families decided it was the right time to adopt or buy a dog. Working from home made it possible for people to clean up after puppies, take dogs out for regular walks, and keep up with feeding, grooming, and veterinary care. The kids were home from school and desperate for the kind of entertainment and distraction that a new pet provides.
